@@ -11,7 +11,7 @@
 
 
 #### Note
-- On Windows, the player data file is saved at `%appdata%\Godot\app_userdata\Player Inventory 2.0\`, with file name of `PlayerData`.
+- On Windows, the player data file is saved at `%appdata%\Godot\app_userdata\GodotPlayerInventory\`, with the file name of `PlayerData`.
 
 Kindly subscribe to my [Youtube](https://www.youtube.com/c/toffe) channel for more updates. Thank you for all your support!
 _\- Toffe_
