@@ -29,7 +29,9 @@ settings/fps/force_fps=60
 window/size/width=800
 window/size/height=450
 window/dpi/allow_hidpi=true
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 

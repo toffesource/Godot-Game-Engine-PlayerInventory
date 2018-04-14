@@ -13,7 +13,7 @@ func _ready():
 
 
 func load_data():
-	if playerData == null:
+	if (playerData == null):
 		var dict = {"inventory":{}}
 		for slot in range (0, inventory_maxSlots):
 			dict["inventory"][String(slot)] = {"id": "0", "amount": 0}
@@ -29,39 +29,43 @@ func save_data():
 
 func inventory_getEmptySlot():
 	for slot in range(0, inventory_maxSlots):
-		if inventory[String(slot)]["id"] == "0": return int(slot)
+		if (inventory[String(slot)]["id"] == "0"): 
+			return int(slot)
 	print ("Inventory is full!")
 	return -1
 
 
-func inventory_addItem(var itemId):
+func inventory_addItem(itemId):
 	var itemData = Global_ItemDatabase.get_item(String(itemId))
-	if itemData == null: return
-	if !itemData["stackable"]:
+	if (itemData == null): 
+		return -1
+	if (!itemData["stackable"]):
 		var slot = inventory_getEmptySlot()
-		if slot < 0: return
+		if (slot < 0): 
+			return -1
 		inventory[String(slot)] = {"id": String(itemId), "amount": 1}
-		return
+		return slot
 	for slot in range (0, inventory_maxSlots):
-		if inventory[String(slot)]["id"] == String(itemId):
+		if (inventory[String(slot)]["id"] == String(itemId)):
 			inventory[String(slot)]["amount"] = int(inventory[String(slot)]["amount"] + 1)
-			return
+			return slot
 	var slot = inventory_getEmptySlot()
-	if slot < 0: return
+	if (slot < 0): 
+		return -1
 	inventory[String(slot)] = {"id": String(itemId), "amount": 1}
+	return slot
 
 
-func inventory_removeItem(var slot):
+func inventory_removeItem(slot):
 	var newAmount = inventory[String(slot)]["amount"] - 1
-	if newAmount < 1:
+	if (newAmount < 1):
 		inventory[String(slot)] = {"id": "0", "amount": 0}
 		return 0
 	inventory[String(slot)]["amount"] = newAmount
 	return newAmount
 
 
-func inventory_moveItem(var fromSlot, var toSlot):
+func inventory_moveItem(fromSlot, toSlot):
 	var temp_ToSlotItem = inventory[String(toSlot)]
 	inventory[String(toSlot)] = inventory[String(fromSlot)]
 	inventory[String(fromSlot)] = temp_ToSlotItem
-	
