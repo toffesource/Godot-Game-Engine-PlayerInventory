@@ -9,7 +9,7 @@
 |  | Links |
 | ------ | ------ |
 | Toffe Youtube Channel | https://www.youtube.com/c/toffe |
-| Godot Game Engine 3.x | https://godotengine.org |
+| Godot Game Engine | https://godotengine.org |
 | Kenney Assets (Generic Items) | https://kenney.nl/assets/generic-items |
 
 
