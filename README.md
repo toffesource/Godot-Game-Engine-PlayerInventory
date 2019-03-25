@@ -1,12 +1,15 @@
 # GodotPlayerInventory
 
-### New Feature
-  - Item Drag and drop.
+### Project Features
+  - Organize items in inventory via drag and drop.
+  - Split stackable items. (Right click a stacked item while holding shift key to split.)
+  - Merge similar items.
+  - Save inventory's current state.
 
 |  | Links |
 | ------ | ------ |
 | Toffe Youtube Channel | https://www.youtube.com/c/toffe |
-| Godot Game Engine | https://godotengine.org |
+| Godot Game Engine 3.x | https://godotengine.org |
 | Kenney Assets (Generic Items) | https://kenney.nl/assets/generic-items |
 
 

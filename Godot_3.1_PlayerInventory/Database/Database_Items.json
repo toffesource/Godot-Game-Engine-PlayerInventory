@@ -1,0 +1,133 @@
+{
+	"0": {
+		"name": "",
+		"icon": "res://Database/Item_Icons/empty_slot.png",
+		"type": "misc",
+		"weight": 0.0,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "",
+		"sell_price": 0
+	},
+	
+	"1": {
+		"name": "Electric Drill",
+		"icon": "res://Database/Item_Icons/genericItem_color_001.png",
+		"type": "equipment",
+		"weight": 10.1,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "A drill which is driven by an electric motor, commonly used for drilling holes on concrete and wood.",
+		"sell_price": 95
+	},
+	
+	"2": {
+		"name": "Angle Grinder",
+		"icon": "res://Database/Item_Icons/genericItem_color_002.png",
+		"type": "equipment",
+		"weight": 10.5,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "Also known as a side grinder or disc grinder, is a handheld power tool used for grinding and polishing.",
+		"sell_price": 111
+	},
+	
+	"3": {
+		"name": "Tea Cup",
+		"icon": "res://Database/Item_Icons/genericItem_color_003.png",
+		"type": "misc",
+		"weight": 1.1,
+		"stackable": true,
+		"stack_limit": 10,
+		"description": "Care to have some tea? In some lands it is custom to raise the last finger on the hand, or 'pinkie' when drinking from a tea cup.",
+		"sell_price": 6
+	},
+	
+	"4": {
+		"name": "Wrench",
+		"icon": "res://Database/Item_Icons/genericItem_color_004.png",
+		"type": "equipment",
+		"weight": 9.5,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "A tool used to provide grip and mechanical advantage in applying torque to turn objects.",
+		"sell_price": 25
+	},
+	
+	"5": {
+		"name": "Screw Driver",
+		"icon": "res://Database/Item_Icons/genericItem_color_005.png",
+		"type": "equipment",
+		"weight": 9.3,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "A tool for turning screws.",
+		"sell_price": 10
+	},
+	
+	"6": {
+		"name": "Paint Brush",
+		"icon": "res://Database/Item_Icons/genericItem_color_011.png",
+		"type": "equipment",
+		"weight": 0.5,
+		"stackable": false,
+		"stack_limit": 1,
+		"description": "A brush used to apply paint or sometimes ink. A paintbrush is usually made by clamping the bristles to a handle with a ferrule.",
+		"sell_price": 7
+	},
+	
+	"7": {
+		"name": "Book",
+		"icon": "res://Database/Item_Icons/genericItem_color_035.png",
+		"type": "misc",
+		"weight": 0.87,
+		"stackable": true,
+		"stack_limit": 15,
+		"description": "A book with an orange hard cover. The title reads as 'The Meaning of Life' by Gregory McDuckleberry",
+		"sell_price": 17
+	},
+	
+	"8": {
+		"name": "Electronic Parts",
+		"icon": "res://Database/Item_Icons/genericItem_color_075.png",
+		"type": "misc",
+		"weight": 2.5,
+		"stackable": true,
+		"stack_limit": 12,
+		"description": "Various electronic components taken out from a computer unit.",
+		"sell_price": 30
+	},
+	
+	"9": {
+		"name": "Medicine Capsule",
+		"icon": "res://Database/Item_Icons/genericItem_color_090.png",
+		"type": "consumable",
+		"weight": 0.1,
+		"stackable": true,
+		"stack_limit": 10,
+		"description": "A miracle medicine that cures all ailments.",
+		"sell_price": 10
+	},
+	
+	"10": {
+		"name": "First Aid Kit",
+		"icon": "res://Database/Item_Icons/genericItem_color_102.png",
+		"type": "consumable",
+		"weight": 2.8,
+		"stackable": true,
+		"stack_limit": 30,
+		"description": "A collection of supplies and equipment that is used to give medical treatment. Restores up to full health.",
+		"sell_price": 15
+	},
+	
+	"11": {
+		"name": "Bandage",
+		"icon": "res://Database/Item_Icons/genericItem_color_100.png",
+		"type": "consumable",
+		"weight": 0.1,
+		"stackable": true,
+		"stack_limit": 10,
+		"description": "Patch up that open wound to avoid exposure and infection. Restores a tiny amount of HP.",
+		"sell_price": 3
+	},
+}
