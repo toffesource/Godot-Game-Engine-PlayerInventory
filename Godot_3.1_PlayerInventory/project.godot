@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot3.1_PlayerInventory"
+config/name="Godot_3.1_PlayerInventory"
 run/main_scene="res://Scenes/Scene_PlayerInventory.tscn"
 config/icon="res://icon.png"
 

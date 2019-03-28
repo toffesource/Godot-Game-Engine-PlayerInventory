@@ -1,42 +1,41 @@
 # Global_Player.gd
-
 extends Node
 
-var url_PlayerData = "user://PlayerData.bin"
-var inventory = {}
-var inventory_maxSlots = 45
-onready var playerData = Global_DataParser.load_data(url_PlayerData)
+var url_PlayerData:String = "user://PlayerData.bin"
+var inventory:Dictionary = {}
+var inventory_maxSlots:int = 45
+onready var playerData:Dictionary = Global_DataParser.load_data(url_PlayerData)
 
 
-func _ready():
+func _ready() -> void:
 	load_data()
 
 
-func load_data():
-	if (playerData == null):
-		var dict = {"inventory":{}}
+func load_data() -> void:
+	if (playerData.empty()):
+		var dict:Dictionary = {"inventory":{}}
 		for slot in range (0, inventory_maxSlots):
-			dict["inventory"][String(slot)] = {"id": "0", "amount": 0}
+			dict["inventory"][str(slot)] = {"id": "0", "amount": 0}
 		Global_DataParser.write_data(url_PlayerData, dict)
 		inventory = dict["inventory"]
 	else:
 		inventory = playerData["inventory"]
 
 
-func save_data():
+func save_data() -> void:
 	Global_DataParser.write_data(url_PlayerData, {"inventory": inventory})
 
-func inventory_getItem(slot):
-	return inventory[String(slot)]
+func inventory_getItem(slot:int) -> Dictionary:
+	return inventory[str(slot)]
 
-func inventory_getEmptySlot():
+func inventory_getEmptySlot() -> int:
 	for slot in range(0, inventory_maxSlots):
-		if (inventory[String(slot)]["id"] == "0"): 
+		if (inventory[str(slot)]["id"] == "0"): 
 			return int(slot)
 	print ("Inventory is full!")
 	return -1
 
-func inventory_splitItem(slot, split_amount):
+func inventory_splitItem(slot, split_amount) -> int:
 	if (split_amount <= 0):
 		return -1
 	var emptySlot = inventory_getEmptySlot()
@@ -44,13 +43,13 @@ func inventory_splitItem(slot, split_amount):
 		return emptySlot
 		
 	var new_amount = int(inventory_getItem(slot)["amount"]) - split_amount
-	inventory[String(slot)]["amount"] = new_amount
-	inventory[String(emptySlot)] = {"id": inventory[String(slot)]["id"], "amount": split_amount}
+	inventory[str(slot)]["amount"] = new_amount
+	inventory[str(emptySlot)] = {"id": inventory[str(slot)]["id"], "amount": split_amount}
 	return emptySlot
 
-func inventory_addItem(itemId):
-	var itemData = Global_ItemDatabase.get_item(String(itemId))
-	if (itemData == null): 
+func inventory_addItem(itemId:int) -> int:
+	var itemData:Dictionary = Global_ItemDatabase.get_item(str(itemId))
+	if (itemData.empty()): 
 		return -1
 	if (int(itemData["stack_limit"]) <= 1):
 		var slot = inventory_getEmptySlot()
@@ -73,7 +72,7 @@ func inventory_addItem(itemId):
 	return slot
 
 
-func inventory_removeItem(slot):
+func inventory_removeItem(slot) -> int:
 	var newAmount = inventory[String(slot)]["amount"] - 1
 	if (newAmount < 1):
 		inventory_updateItem(slot, 0, 0)
@@ -81,24 +80,24 @@ func inventory_removeItem(slot):
 	inventory[String(slot)]["amount"] = newAmount
 	return newAmount
 
-func inventory_updateItem(slot, new_id, new_amount):
+func inventory_updateItem(slot:int, new_id:int, new_amount:int) -> void:
 	if (slot < 0):
 		return
 	if (new_amount < 0):
 		return
-	if (Global_ItemDatabase.get_item(new_id) == null):
+	if (Global_ItemDatabase.get_item(str(new_id)).empty()):
 		return
-	inventory[String(slot)] = {"id": String(new_id), "amount": int(new_amount)}
+	inventory[str(slot)] = {"id": str(new_id), "amount": int(new_amount)}
 	
-func inventory_mergeItem(fromSlot, toSlot):
+func inventory_mergeItem(fromSlot:int, toSlot:int) -> void:
 	if (fromSlot < 0 or toSlot < 0):
 		return
 	
-	var fromSlot_invData = inventory[String(fromSlot)]
-	var toSlot_invData = inventory[String(toSlot)]
+	var fromSlot_invData:Dictionary = inventory[str(fromSlot)]
+	var toSlot_invData:AudioEffectBandPassFilter = inventory[str(toSlot)]
 	
-	var toSlot_stackLimit = int(Global_ItemDatabase.get_item(inventory[String(toSlot)]["id"])["stack_limit"])
-	var fromSlot_stackLimit = int(Global_ItemDatabase.get_item(inventory[String(fromSlot)]["id"])["stack_limit"])
+	var toSlot_stackLimit:int = (Global_ItemDatabase.get_item(inventory[str(toSlot)]["id"])["stack_limit"])
+	var fromSlot_stackLimit:int = (Global_ItemDatabase.get_item(inventory[str(fromSlot)]["id"])["stack_limit"])
 	
 	if (toSlot_stackLimit <= 1 or fromSlot_stackLimit <=1):
 		return
@@ -110,18 +109,18 @@ func inventory_mergeItem(fromSlot, toSlot):
 		inventory_moveItem(fromSlot, toSlot)
 		return
 	
-	var toSlot_newAmount = int(toSlot_invData["amount"]) + int(fromSlot_invData["amount"])
-	var fromSlot_newAmount = 0
+	var toSlot_newAmount:int = (toSlot_invData["amount"]) + (fromSlot_invData["amount"])
+	var fromSlot_newAmount:int = 0
 	if (toSlot_newAmount > toSlot_stackLimit):
 		fromSlot_newAmount = toSlot_newAmount - toSlot_stackLimit
-		inventory_updateItem(toSlot, inventory[String(toSlot)]["id"], toSlot_stackLimit)
-		inventory_updateItem(fromSlot, inventory[String(fromSlot)]["id"], fromSlot_newAmount)
+		inventory_updateItem(toSlot, int(inventory[str(toSlot)]["id"]), toSlot_stackLimit)
+		inventory_updateItem(fromSlot, int(inventory[str(fromSlot)]["id"]), fromSlot_newAmount)
 	else:
-		inventory_updateItem(toSlot, inventory[String(toSlot)]["id"], toSlot_newAmount)
+		inventory_updateItem(toSlot, int(inventory[str(toSlot)]["id"]), toSlot_newAmount)
 		inventory_updateItem(fromSlot, 0, 0)
 		
 
-func inventory_moveItem(fromSlot, toSlot):
-	var temp_ToSlotItem = inventory[String(toSlot)]
-	inventory[String(toSlot)] = inventory[String(fromSlot)]
-	inventory[String(fromSlot)] = temp_ToSlotItem
+func inventory_moveItem(fromSlot:int, toSlot:int) -> void:
+	var temp_ToSlotItem:Dictionary = inventory[str(toSlot)]
+	inventory[str(toSlot)] = inventory[str(fromSlot)]
+	inventory[str(fromSlot)] = temp_ToSlotItem
