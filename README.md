@@ -3,6 +3,8 @@
 ### Project Features
   - Organize items in inventory via drag and drop.
   - Split stackable items. (Right click a stacked item while holding shift key to split.)
+  - Item stacking limit. (A stackable item will consume a new slot once it reaches its stack limit.)
+  - Item information. (Right mouse click to show a detailed description of a selected item.)
   - Merge similar items.
   - Save inventory's current state.
 
