@@ -1,4 +1,3 @@
-# Global_Player.gd
 extends Node
 
 var url_PlayerData:String = "user://PlayerData.bin"

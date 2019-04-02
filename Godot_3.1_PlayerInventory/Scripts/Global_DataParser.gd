@@ -1,4 +1,3 @@
-# Global_DataParser.gd
 extends Node
 
 onready var file = File.new()

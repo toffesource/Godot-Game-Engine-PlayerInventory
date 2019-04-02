@@ -1,5 +1,4 @@
-# Script_PlayerInventory.gd
-extends Node2D
+extends Control
 
 var activeItemSlot:int = -1
 var dropItemSlot:int = -1
@@ -27,6 +26,7 @@ func _ready() -> void:
 	set_process(false)
 	set_process_input(true)
 	
+#warning-ignore:unused_argument
 func _process(delta) -> void:
 	if (isDraggingItem):
 		$Panel/Sprite_DraggedItem.global_position = get_viewport().get_mouse_position()
