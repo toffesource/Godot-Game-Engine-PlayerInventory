@@ -93,7 +93,7 @@ func inventory_mergeItem(fromSlot:int, toSlot:int) -> void:
 		return
 	
 	var fromSlot_invData:Dictionary = inventory[str(fromSlot)]
-	var toSlot_invData:AudioEffectBandPassFilter = inventory[str(toSlot)]
+	var toSlot_invData:Dictionary = inventory[str(toSlot)]
 	
 	var toSlot_stackLimit:int = (Global_ItemDatabase.get_item(inventory[str(toSlot)]["id"])["stack_limit"])
 	var fromSlot_stackLimit:int = (Global_ItemDatabase.get_item(inventory[str(fromSlot)]["id"])["stack_limit"])
