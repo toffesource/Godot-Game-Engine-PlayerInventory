@@ -167,7 +167,6 @@ margin_top = 190.0
 margin_right = 190.0
 margin_bottom = 220.0
 text = "Drop"
-
 [connection signal="item_rmb_selected" from="Panel/ItemList" to="." method="_on_ItemList_item_rmb_selected"]
 [connection signal="mouse_entered" from="Panel/ItemList" to="." method="_on_ItemList_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/ItemList" to="." method="_on_ItemList_mouse_exited"]

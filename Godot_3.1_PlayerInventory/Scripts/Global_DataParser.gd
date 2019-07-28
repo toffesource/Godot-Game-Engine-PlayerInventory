@@ -10,7 +10,7 @@ func load_data(url) -> Dictionary:
 	data = parse_json(file.get_as_text())
 	file.close()
 	return data
-	
+
 func write_data(url:String, dict:Dictionary):
 	if url == null: return
 	file.open(url, File.WRITE)
