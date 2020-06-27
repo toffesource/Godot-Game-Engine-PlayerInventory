@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Script_PlayerInventory.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Database/Item_Icons/empty_slot.png" type="Texture" id=3]
+[ext_resource path="res://Database/Item_Icons/genericItem_color_002.png" type="Texture" id=4]
+[ext_resource path="res://Database/Item_Icons/genericItem_color_028.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -26,10 +29,10 @@ z_index = 1
 z_as_relative = false
 
 [node name="ItemList" type="ItemList" parent="Panel"]
-margin_left = 160.0
-margin_top = 30.0
-margin_right = 760.0
-margin_bottom = 420.0
+margin_left = 161.053
+margin_top = 30.4838
+margin_right = 761.053
+margin_bottom = 420.484
 custom_styles/selected_focus = SubResource( 1 )
 custom_styles/bg_focus = SubResource( 2 )
 custom_styles/cursor_unfocused = SubResource( 3 )
@@ -38,11 +41,15 @@ custom_styles/bg = SubResource( 5 )
 custom_colors/guide_color = Color( 0, 0, 0, 0 )
 custom_constants/vseparation = 10
 custom_constants/hseparation = 15
+items = [ "", ExtResource( 3 ), false, "Item 1", ExtResource( 4 ), false, "", ExtResource( 3 ), false, "", ExtResource( 5 ), false ]
 auto_height = true
 max_columns = 0
 same_column_width = true
 icon_mode = 0
 fixed_icon_size = Vector2( 48, 48 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button_Save" type="Button" parent="Panel"]
 margin_left = 20.0
@@ -59,7 +66,6 @@ margin_bottom = 420.0
 text = "Add Item"
 
 [node name="WindowDialog_AddItemWindow" type="WindowDialog" parent="Panel"]
-editor/display_folded = true
 margin_left = 240.0
 margin_top = 160.0
 margin_right = 610.0
@@ -99,7 +105,6 @@ margin_bottom = 120.0
 text = "Close"
 
 [node name="WindowDialog_SplitItemWindow" type="WindowDialog" parent="Panel"]
-editor/display_folded = true
 margin_left = 240.0
 margin_top = 160.0
 margin_right = 610.0
@@ -139,7 +144,6 @@ text = "1"
 align = 1
 
 [node name="WindowDialog_ItemMenu" type="WindowDialog" parent="Panel"]
-editor/display_folded = true
 margin_left = 300.0
 margin_top = 130.0
 margin_right = 590.0
